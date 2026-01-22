@@ -15,6 +15,7 @@ and build great things together.
 1. Navigate to the repository on GitHub
 2. Click the "Fork" button
 3. Clone your fork locally:
+
    ```bash
    git clone https://github.com/YOUR_USERNAME/REPO_NAME.git
    cd REPO_NAME
@@ -71,7 +72,7 @@ All projects follow consistent code style guidelines:
 
 We use [Conventional Commits](https://www.conventionalcommits.org/):
 
-```
+```text
 <type>(<scope>): <description>
 
 [optional body]

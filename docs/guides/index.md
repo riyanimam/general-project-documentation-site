@@ -7,7 +7,7 @@ practices, workflows, and detailed tutorials.
 
 <div class="grid cards" markdown>
 
--   :material-rocket-launch:{ .lg .middle } **Getting Started**
+- :material-rocket-launch:{ .lg .middle } **Getting Started**
 
     ---
 
@@ -16,7 +16,7 @@ practices, workflows, and detailed tutorials.
 
     [:octicons-arrow-right-24: Get started](getting-started.md)
 
--   :material-source-branch:{ .lg .middle } **Development Workflows**
+- :material-source-branch:{ .lg .middle } **Development Workflows**
 
     ---
 
@@ -25,7 +25,7 @@ practices, workflows, and detailed tutorials.
 
     [:octicons-arrow-right-24: Learn workflows](development-workflows.md)
 
--   :material-pipe:{ .lg .middle } **CI/CD Best Practices**
+- :material-pipe:{ .lg .middle } **CI/CD Best Practices**
 
     ---
 
@@ -34,7 +34,7 @@ practices, workflows, and detailed tutorials.
 
     [:octicons-arrow-right-24: Configure CI/CD](cicd-best-practices.md)
 
--   :material-shield-lock:{ .lg .middle } **Security Guidelines**
+- :material-shield-lock:{ .lg .middle } **Security Guidelines**
 
     ---
 

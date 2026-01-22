@@ -18,7 +18,7 @@ Tools for automating repetitive tasks and maintenance operations.
 
 <div class="grid cards" markdown>
 
--   :material-broom:{ .lg .middle } **AWS Environment Cleanup Lambda**
+- :material-broom:{ .lg .middle } **AWS Environment Cleanup Lambda**
 
     ---
 
@@ -35,7 +35,7 @@ Projects focused on gathering and processing data from various sources.
 
 <div class="grid cards" markdown>
 
--   :material-spider:{ .lg .middle } **Georgia Legislation Webcrawler**
+- :material-spider:{ .lg .middle } **Georgia Legislation Webcrawler**
 
     ---
 
@@ -52,7 +52,7 @@ Ready-to-use templates for project management and organization.
 
 <div class="grid cards" markdown>
 
--   :material-view-dashboard:{ .lg .middle } **Kanban Board Template**
+- :material-view-dashboard:{ .lg .middle } **Kanban Board Template**
 
     ---
 

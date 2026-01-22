@@ -73,12 +73,14 @@ aws-environment-cleanup-lambda/
 ### Deployment
 
 1. **Clone the repository**:
+
    ```bash
    git clone https://github.com/riyanimam/aws-environment-cleanup-lambda.git
    cd aws-environment-cleanup-lambda
    ```
 
 2. **Configure Terraform variables**:
+
    ```bash
    cd terraform
    cp terraform.tfvars.example terraform.tfvars
@@ -86,6 +88,7 @@ aws-environment-cleanup-lambda/
    ```
 
 3. **Deploy with Terraform**:
+
    ```bash
    terraform init
    terraform plan
@@ -199,7 +202,7 @@ results = cleanup_unused_dashboards(
 !!! tip "Exclusion Lists"
     Use `EXCLUDED_PREFIXES` to protect critical resources. For example:
     ```
-    EXCLUDED_PREFIXES=prod-,critical-,do-not-delete-
+EXCLUDED_PREFIXES=prod-,critical-,do-not-delete-
     ```
 
 !!! note "QuickSight Permissions"
@@ -215,16 +218,19 @@ results = cleanup_unused_dashboards(
 ### Lambda Not Running
 
 1. Check EventBridge rule is enabled:
+
    ```bash
    aws events describe-rule --name <rule-name>
    ```
 
 2. Verify Lambda permissions:
+
    ```bash
    aws lambda get-policy --function-name <function-name>
    ```
 
 3. Check CloudWatch Logs for errors:
+
    ```bash
    aws logs tail /aws/lambda/<function-name> --follow
    ```
@@ -232,6 +238,7 @@ results = cleanup_unused_dashboards(
 ### Access Denied Errors
 
 1. Verify IAM role has necessary permissions:
+
    ```bash
    aws iam get-role-policy --role-name <role-name> --policy-name <policy-name>
    ```
@@ -239,6 +246,7 @@ results = cleanup_unused_dashboards(
 2. Check for resource-based policies that may block access
 
 3. Ensure STS assume role is working:
+
    ```bash
    aws sts get-caller-identity
    ```
@@ -246,11 +254,13 @@ results = cleanup_unused_dashboards(
 ### QuickSight Errors
 
 1. Verify QuickSight is enabled in your region:
+
    ```bash
    aws quicksight describe-account-subscription --aws-account-id <account-id>
    ```
 
 2. Check namespace exists:
+
    ```bash
    aws quicksight list-namespaces --aws-account-id <account-id>
    ```
@@ -287,6 +297,7 @@ python -c "from src.lambda_cleanup import cleanup_unused_lambdas; print(cleanup_
 ### Adding New Cleanup Modules
 
 1. Create a new module in `src/`:
+
    ```python
    # src/new_service_cleanup.py
    import boto3
@@ -305,6 +316,7 @@ python -c "from src.lambda_cleanup import cleanup_unused_lambdas; print(cleanup_
    ```
 
 2. Import in `main.py`:
+
    ```python
    from new_service_cleanup import cleanup_new_service
 

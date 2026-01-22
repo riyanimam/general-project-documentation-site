@@ -5,7 +5,7 @@ Welcome to the comprehensive documentation hub for all public projects by **Riya
 
 <div class="grid cards" markdown>
 
--   :material-cloud:{ .lg .middle } **AWS Lambda Templates**
+- :material-cloud:{ .lg .middle } **AWS Lambda Templates**
 
     ---
 
@@ -14,7 +14,7 @@ Welcome to the comprehensive documentation hub for all public projects by **Riya
 
     [:octicons-arrow-right-24: Explore Templates](projects/lambda-templates/index.md)
 
--   :material-terraform:{ .lg .middle } **Terraform Modules**
+- :material-terraform:{ .lg .middle } **Terraform Modules**
 
     ---
 
@@ -23,7 +23,7 @@ Welcome to the comprehensive documentation hub for all public projects by **Riya
 
     [:octicons-arrow-right-24: View Modules](projects/terraform-modules/index.md)
 
--   :material-tools:{ .lg .middle } **Utility Projects**
+- :material-tools:{ .lg .middle } **Utility Projects**
 
     ---
 
@@ -31,7 +31,7 @@ Welcome to the comprehensive documentation hub for all public projects by **Riya
 
     [:octicons-arrow-right-24: Browse Utilities](projects/utilities/index.md)
 
--   :material-book-open-variant:{ .lg .middle } **Development Guides**
+- :material-book-open-variant:{ .lg .middle } **Development Guides**
 
     ---
 

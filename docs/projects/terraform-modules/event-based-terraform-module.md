@@ -199,16 +199,19 @@ The project includes comprehensive GitHub Actions workflows:
 ### Lambda Not Triggered
 
 1. Check the event source mapping is enabled:
+
    ```bash
    aws lambda list-event-source-mappings --function-name <name>
    ```
 
 2. Verify IAM permissions:
+
    ```bash
    aws iam get-role-policy --role-name <role> --policy-name <policy>
    ```
 
 3. Check CloudWatch Logs for errors:
+
    ```bash
    aws logs tail /aws/lambda/<function-name> --follow
    ```
@@ -216,6 +219,7 @@ The project includes comprehensive GitHub Actions workflows:
 ### DLQ Not Receiving Messages
 
 1. Verify DLQ is configured:
+
    ```bash
    aws sqs get-queue-attributes --queue-url <queue-url> --attribute-names All
    ```

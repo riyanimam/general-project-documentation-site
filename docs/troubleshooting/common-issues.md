@@ -7,11 +7,13 @@ Frequently encountered problems and their solutions across all projects.
 ### Node.js Version Mismatch
 
 **Symptom:**
+
 ```
 error engine node: wanted: ">=20.0.0" (current: "18.x.x")
 ```
 
 **Solution:**
+
 ```bash
 # Using nvm
 nvm install 20
@@ -25,11 +27,13 @@ node --version
 ### Python Version Issues
 
 **Symptom:**
+
 ```
 Python 3.12 required, but Python 3.9 found
 ```
 
 **Solution:**
+
 ```bash
 # Using pyenv
 pyenv install 3.12
@@ -42,11 +46,13 @@ pyenv global 3.12
 ### pnpm Not Found
 
 **Symptom:**
+
 ```
 pnpm: command not found
 ```
 
 **Solution:**
+
 ```bash
 # Install pnpm
 npm install -g pnpm
@@ -61,11 +67,13 @@ corepack prepare pnpm@latest --activate
 ### Package Lock Conflict
 
 **Symptom:**
+
 ```
 ERR_PNPM_OUTDATED_LOCKFILE
 ```
 
 **Solution:**
+
 ```bash
 # Regenerate lock file
 rm pnpm-lock.yaml
@@ -75,11 +83,13 @@ pnpm install
 ### Python Dependency Conflicts
 
 **Symptom:**
+
 ```
 ERROR: Cannot install package-a and package-b because these package versions have conflicting dependencies.
 ```
 
 **Solution:**
+
 ```bash
 # Use virtual environment
 python -m venv .venv
@@ -94,11 +104,13 @@ uv pip install -r requirements.txt --system
 ### Go Module Issues
 
 **Symptom:**
+
 ```
 go: module found but does not contain package
 ```
 
 **Solution:**
+
 ```bash
 # Clear and re-download
 go clean -modcache
@@ -111,11 +123,13 @@ go mod tidy
 ### TypeScript Compilation Errors
 
 **Symptom:**
+
 ```
 error TS2307: Cannot find module './utils' or its corresponding type declarations.
 ```
 
 **Solution:**
+
 ```bash
 # Check tsconfig.json paths
 # Ensure file exists and is properly exported
@@ -128,6 +142,7 @@ pnpm run build
 ### ESM Import Issues
 
 **Symptom:**
+
 ```
 Error [ERR_REQUIRE_ESM]: require() of ES Module not supported
 ```
@@ -135,6 +150,7 @@ Error [ERR_REQUIRE_ESM]: require() of ES Module not supported
 **Solution:**
 
 Ensure `package.json` has:
+
 ```json
 {
   "type": "module"
@@ -142,6 +158,7 @@ Ensure `package.json` has:
 ```
 
 And imports use `.js` extension:
+
 ```typescript
 // Wrong
 import { handler } from './handler';
@@ -153,11 +170,13 @@ import { handler } from './handler.js';
 ### Go Build Failures
 
 **Symptom:**
+
 ```
 cannot find module providing package github.com/aws/aws-lambda-go
 ```
 
 **Solution:**
+
 ```bash
 # Initialize modules
 go mod init
@@ -174,6 +193,7 @@ go build ./...
 ### Tests Not Found
 
 **Symptom:**
+
 ```
 No tests found
 ```
@@ -181,6 +201,7 @@ No tests found
 **Solution:**
 
 Check test file naming:
+
 - **TypeScript**: `*.test.ts` or `*.spec.ts`
 - **Python**: `test_*.py` or `*_test.py`
 - **Go**: `*_test.go`
@@ -188,6 +209,7 @@ Check test file naming:
 ### Test Timeout
 
 **Symptom:**
+
 ```
 Timeout - Async callback was not invoked within timeout
 ```
@@ -222,6 +244,7 @@ Increase timeout in test config:
 ### Mock Issues
 
 **Symptom:**
+
 ```
 TypeError: Cannot read property of undefined
 ```
@@ -229,6 +252,7 @@ TypeError: Cannot read property of undefined
 **Solution:**
 
 Ensure mocks are properly set up:
+
 ```typescript
 // Vitest
 vi.mock('aws-sdk', () => ({
@@ -243,11 +267,13 @@ vi.mock('aws-sdk', () => ({
 ### Credentials Not Found
 
 **Symptom:**
+
 ```
 Unable to locate credentials
 ```
 
 **Solution:**
+
 ```bash
 # Configure credentials
 aws configure
@@ -264,6 +290,7 @@ aws sts get-caller-identity
 ### Access Denied
 
 **Symptom:**
+
 ```
 An error occurred (AccessDenied) when calling the X operation
 ```
@@ -286,11 +313,13 @@ aws iam simulate-principal-policy \
 ### Region Mismatch
 
 **Symptom:**
+
 ```
 Resource not found in region us-east-1
 ```
 
 **Solution:**
+
 ```bash
 # Set correct region
 export AWS_DEFAULT_REGION=us-west-2
@@ -305,11 +334,13 @@ client = boto3.client('s3', region_name='us-west-2')
 ### Merge Conflicts
 
 **Symptom:**
+
 ```
 CONFLICT (content): Merge conflict in file.ts
 ```
 
 **Solution:**
+
 ```bash
 # View conflicts
 git status
@@ -325,11 +356,13 @@ git commit
 ### Detached HEAD
 
 **Symptom:**
+
 ```
 You are in 'detached HEAD' state.
 ```
 
 **Solution:**
+
 ```bash
 # Create branch from current state
 git checkout -b my-new-branch
@@ -341,11 +374,13 @@ git checkout main
 ### Permission Denied (SSH)
 
 **Symptom:**
+
 ```
 git@github.com: Permission denied (publickey).
 ```
 
 **Solution:**
+
 ```bash
 # Check SSH key
 ssh -T git@github.com
@@ -362,11 +397,13 @@ git remote set-url origin https://github.com/user/repo.git
 ### VS Code TypeScript Issues
 
 **Symptom:**
+
 ```
 Cannot find module or type declarations
 ```
 
 **Solution:**
+
 1. Restart TypeScript server: `Cmd/Ctrl + Shift + P` → "Restart TS Server"
 2. Reload window: `Cmd/Ctrl + Shift + P` → "Reload Window"
 3. Delete `node_modules` and reinstall
@@ -374,11 +411,13 @@ Cannot find module or type declarations
 ### Python Interpreter Not Found
 
 **Symptom:**
+
 ```
 Python interpreter not found
 ```
 
 **Solution:**
+
 1. `Cmd/Ctrl + Shift + P` → "Python: Select Interpreter"
 2. Choose the correct virtual environment
 3. Ensure Python extension is installed
@@ -386,11 +425,13 @@ Python interpreter not found
 ### Go Tools Not Working
 
 **Symptom:**
+
 ```
 gopls was not able to find modules in your workspace
 ```
 
 **Solution:**
+
 1. Ensure `go.mod` exists in workspace root
 2. Run `Go: Install/Update Tools` from command palette
 3. Check GOPATH and GOROOT settings
@@ -400,11 +441,13 @@ gopls was not able to find modules in your workspace
 ### Slow Builds
 
 **Causes:**
+
 - Too many files being processed
 - No caching enabled
 - Insufficient resources
 
 **Solutions:**
+
 ```bash
 # Use incremental builds
 pnpm run build --incremental
@@ -420,11 +463,13 @@ pnpm run build --incremental
 ### Memory Issues
 
 **Symptom:**
+
 ```
 JavaScript heap out of memory
 ```
 
 **Solution:**
+
 ```bash
 # Increase Node.js memory
 export NODE_OPTIONS="--max-old-space-size=4096"
@@ -440,11 +485,13 @@ export NODE_OPTIONS="--max-old-space-size=4096"
 ### Windows Path Issues
 
 **Symptom:**
+
 ```
 Error: ENOENT: no such file or directory
 ```
 
 **Solution:**
+
 ```bash
 # Use forward slashes or path.join
 const filePath = path.join(__dirname, 'file.txt');
@@ -456,11 +503,13 @@ const normalized = path.normalize(rawPath);
 ### Line Ending Issues
 
 **Symptom:**
+
 ```
 warning: LF will be replaced by CRLF
 ```
 
 **Solution:**
+
 ```bash
 # Configure Git
 git config --global core.autocrlf input  # macOS/Linux

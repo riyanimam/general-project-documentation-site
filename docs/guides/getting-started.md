@@ -230,7 +230,7 @@ terraform --version
 
 Expected output:
 
-```
+```text
 git version 2.40+
 v20.x.x
 8.x.x

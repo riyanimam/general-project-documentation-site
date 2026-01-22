@@ -61,6 +61,7 @@ flowchart LR
 ### Using the Template
 
 1. **Navigate to the template repository**:
+
    ```
    https://github.com/riyanimam/not-confusing-kanban-board-template
    ```

@@ -7,6 +7,7 @@ Terraform state, provider, and deployment troubleshooting.
 ### State Lock Stuck
 
 **Symptom:**
+
 ```
 Error acquiring the state lock
 Lock Info:
@@ -15,6 +16,7 @@ Lock Info:
 ```
 
 **Solution:**
+
 ```bash
 # Force unlock (use with caution!)
 terraform force-unlock <LOCK_ID>
@@ -28,11 +30,13 @@ aws dynamodb get-item \
 ### State Drift
 
 **Symptom:**
+
 ```
 Note: Objects have changed outside of Terraform
 ```
 
 **Solution:**
+
 ```bash
 # Refresh state
 terraform refresh
@@ -44,11 +48,13 @@ terraform apply -refresh-only
 ### Resource Already Exists
 
 **Symptom:**
+
 ```
 Error: A resource with the ID "xxx" already exists
 ```
 
 **Solution:**
+
 ```bash
 # Import existing resource
 terraform import aws_lambda_function.main my-function
@@ -62,11 +68,13 @@ terraform import 'aws_sqs_queue.queue' https://sqs.us-east-1.amazonaws.com/12345
 ### State File Corruption
 
 **Symptom:**
+
 ```
 Error loading state: state file could not be parsed
 ```
 
 **Solution:**
+
 ```bash
 # Pull state from remote
 terraform state pull > state.json
@@ -83,11 +91,13 @@ cp terraform.tfstate.backup terraform.tfstate
 ### Provider Version Conflicts
 
 **Symptom:**
+
 ```
 Error: Failed to query available provider packages
 ```
 
 **Solution:**
+
 ```hcl
 # Pin provider versions
 terraform {
@@ -101,6 +111,7 @@ terraform {
 ```
 
 Then:
+
 ```bash
 # Update lock file
 terraform init -upgrade
@@ -109,11 +120,13 @@ terraform init -upgrade
 ### Authentication Errors
 
 **Symptom:**
+
 ```
 Error: No valid credential sources found
 ```
 
 **Solution:**
+
 ```bash
 # Configure credentials
 aws configure
@@ -134,11 +147,13 @@ aws sts get-caller-identity
 ### Missing Provider
 
 **Symptom:**
+
 ```
 Error: Could not satisfy plugin requirements
 ```
 
 **Solution:**
+
 ```bash
 # Clear cache and reinitialize
 rm -rf .terraform
@@ -151,6 +166,7 @@ terraform init
 ### Invalid Resource Configuration
 
 **Symptom:**
+
 ```
 Error: Invalid value for variable
 ```
@@ -158,6 +174,7 @@ Error: Invalid value for variable
 **Solution:**
 
 1. Check variable types:
+
    ```hcl
    variable "port" {
      type        = number  # Not string!
@@ -166,6 +183,7 @@ Error: Invalid value for variable
    ```
 
 2. Add validation:
+
    ```hcl
    variable "environment" {
      type = string
@@ -179,6 +197,7 @@ Error: Invalid value for variable
 ### Cycle Detected
 
 **Symptom:**
+
 ```
 Error: Cycle: resource A → resource B → resource A
 ```
@@ -218,6 +237,7 @@ resource "aws_security_group_rule" "a_from_b" {
 ### Unknown Values
 
 **Symptom:**
+
 ```
 Error: Invalid count argument - The "count" value depends on resource attributes that cannot be determined until apply
 ```
@@ -225,6 +245,7 @@ Error: Invalid count argument - The "count" value depends on resource attributes
 **Solution:**
 
 Use `length()` with known values:
+
 ```hcl
 # Before
 count = aws_instance.example.count  # Unknown at plan
@@ -241,6 +262,7 @@ count = var.instance_count  # Known at plan
 ### Resource Not Found
 
 **Symptom:**
+
 ```
 Error: error reading Lambda Function: ResourceNotFoundException
 ```
@@ -248,11 +270,13 @@ Error: error reading Lambda Function: ResourceNotFoundException
 **Solution:**
 
 1. Check resource exists:
+
    ```bash
    aws lambda get-function --function-name my-function
    ```
 
 2. Verify region:
+
    ```hcl
    provider "aws" {
      region = "us-east-1"  # Correct region?
@@ -264,6 +288,7 @@ Error: error reading Lambda Function: ResourceNotFoundException
 ### Permission Denied
 
 **Symptom:**
+
 ```
 Error: error creating IAM Role: AccessDenied
 ```
@@ -271,6 +296,7 @@ Error: error creating IAM Role: AccessDenied
 **Solution:**
 
 1. Check IAM permissions:
+
    ```bash
    aws iam simulate-principal-policy \
      --policy-source-arn arn:aws:iam::123456789012:user/terraform \
@@ -282,6 +308,7 @@ Error: error creating IAM Role: AccessDenied
 ### Rate Limiting
 
 **Symptom:**
+
 ```
 Error: ThrottlingException: Rate exceeded
 ```
@@ -289,6 +316,7 @@ Error: ThrottlingException: Rate exceeded
 **Solution:**
 
 Add retry configuration:
+
 ```hcl
 provider "aws" {
   retry_mode  = "standard"
@@ -297,6 +325,7 @@ provider "aws" {
 ```
 
 Or use a slower parallelism:
+
 ```bash
 terraform apply -parallelism=5
 ```
@@ -306,11 +335,13 @@ terraform apply -parallelism=5
 ### Module Not Found
 
 **Symptom:**
+
 ```
 Error: Module not found
 ```
 
 **Solution:**
+
 ```bash
 # Initialize modules
 terraform init
@@ -329,11 +360,13 @@ module "example" {
 ### Module Version Conflict
 
 **Symptom:**
+
 ```
 Error: Module version requirements conflict
 ```
 
 **Solution:**
+
 ```hcl
 module "example" {
   source  = "registry.terraform.io/hashicorp/example/aws"
@@ -346,6 +379,7 @@ module "example" {
 ### S3 Backend Configuration
 
 **Symptom:**
+
 ```
 Error: Failed to get existing workspaces
 ```
@@ -353,16 +387,19 @@ Error: Failed to get existing workspaces
 **Solution:**
 
 1. Check bucket exists:
+
    ```bash
    aws s3 ls s3://your-terraform-state-bucket
    ```
 
 2. Check DynamoDB table:
+
    ```bash
    aws dynamodb describe-table --table-name terraform-locks
    ```
 
 3. Verify backend configuration:
+
    ```hcl
    terraform {
      backend "s3" {

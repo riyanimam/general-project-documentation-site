@@ -50,7 +50,7 @@ git push -u origin feature/my-new-feature
 
 All projects use [Conventional Commits](https://www.conventionalcommits.org/):
 
-```
+```text
 <type>(<scope>): <description>
 
 [optional body]
@@ -182,7 +182,8 @@ Use prefixes to indicate severity:
 | `question:` | Need clarification | Maybe |
 
 Example:
-```
+
+```text
 blocking: This SQL query is vulnerable to injection. Use parameterized queries.
 
 suggestion: Consider using a constant for this magic number.

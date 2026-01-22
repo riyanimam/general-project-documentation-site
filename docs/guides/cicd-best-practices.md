@@ -29,7 +29,7 @@ flowchart LR
 
 ### Workflow Organization
 
-```
+```text
 .github/
 ├── workflows/
 │   ├── ci.yml           # Main CI pipeline

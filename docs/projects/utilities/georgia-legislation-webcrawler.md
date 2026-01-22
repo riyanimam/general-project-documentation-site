@@ -90,18 +90,21 @@ flowchart TB
 ### Installation
 
 1. **Clone the repository**:
+
    ```bash
    git clone https://github.com/riyanimam/georgia-legislation-webcrawler.git
    cd georgia-legislation-webcrawler
    ```
 
 2. **Install frontend dependencies**:
+
    ```bash
    cd frontend
    npm install
    ```
 
 3. **Install backend dependencies**:
+
    ```bash
    cd backend
    pip install -r requirements.txt
@@ -109,6 +112,7 @@ flowchart TB
    ```
 
 4. **Start the application**:
+
    ```bash
    # Terminal 1 - Backend
    cd backend
@@ -241,11 +245,13 @@ async def extract_bill_data(page) -> dict:
 ### Crawler Fails to Start
 
 1. Ensure Playwright browsers are installed:
+
    ```bash
    playwright install chromium
    ```
 
 2. Check system dependencies:
+
    ```bash
    playwright install-deps
    ```
@@ -255,6 +261,7 @@ async def extract_bill_data(page) -> dict:
 1. Open the page in a real browser
 2. Inspect the element structure
 3. Update selector in code:
+
    ```python
    # Before
    await page.locator(".old-class").text_content()
@@ -275,6 +282,7 @@ await page.wait_for_selector(".content", timeout=30000)
 ### Data Not Saving
 
 1. Check database connection:
+
    ```python
    from database import test_connection
    assert test_connection()
@@ -285,6 +293,7 @@ await page.wait_for_selector(".content", timeout=30000)
 ### Frontend Not Loading
 
 1. Check CORS configuration:
+
    ```python
    # FastAPI example
    from fastapi.middleware.cors import CORSMiddleware

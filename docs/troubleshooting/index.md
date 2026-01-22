@@ -7,7 +7,7 @@ check the project-specific documentation or open an issue on GitHub.
 
 <div class="grid cards" markdown>
 
--   :material-bug:{ .lg .middle } **Common Issues**
+- :material-bug:{ .lg .middle } **Common Issues**
 
     ---
 
@@ -15,7 +15,7 @@ check the project-specific documentation or open an issue on GitHub.
 
     [:octicons-arrow-right-24: View issues](common-issues.md)
 
--   :material-lambda:{ .lg .middle } **Lambda Debugging**
+- :material-lambda:{ .lg .middle } **Lambda Debugging**
 
     ---
 
@@ -23,7 +23,7 @@ check the project-specific documentation or open an issue on GitHub.
 
     [:octicons-arrow-right-24: Debug Lambda](lambda-debugging.md)
 
--   :material-terraform:{ .lg .middle } **Terraform Issues**
+- :material-terraform:{ .lg .middle } **Terraform Issues**
 
     ---
 

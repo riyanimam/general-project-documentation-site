@@ -171,11 +171,13 @@ Implement structured logging for better debugging:
 ### Timeout Errors
 
 **Symptom:**
+
 ```
 Task timed out after X seconds
 ```
 
 **Causes:**
+
 - Operation takes longer than timeout
 - Network issues
 - Deadlock or infinite loop
@@ -183,6 +185,7 @@ Task timed out after X seconds
 **Solutions:**
 
 1. **Increase timeout** (if operation legitimately takes time):
+
    ```hcl
    resource "aws_lambda_function" "main" {
      timeout = 300  # 5 minutes max for sync, 15 for async
@@ -190,6 +193,7 @@ Task timed out after X seconds
    ```
 
 2. **Optimize code**:
+
    ```python
    # Use connection pooling
    import boto3
@@ -210,11 +214,13 @@ Task timed out after X seconds
 ### Memory Errors
 
 **Symptom:**
+
 ```
 Runtime exited with error: signal: killed
 ```
 
 **Solution:**
+
 ```hcl
 resource "aws_lambda_function" "main" {
   memory_size = 512  # Increase memory
@@ -222,6 +228,7 @@ resource "aws_lambda_function" "main" {
 ```
 
 Monitor memory usage:
+
 ```sql
 -- CloudWatch Logs Insights
 fields @timestamp, @maxMemoryUsed, @memorySize
@@ -231,6 +238,7 @@ fields @timestamp, @maxMemoryUsed, @memorySize
 ### Cold Starts
 
 **Symptom:**
+
 ```
 Slow first invocation, INIT_START in logs
 ```
@@ -238,6 +246,7 @@ Slow first invocation, INIT_START in logs
 **Solutions:**
 
 1. **Provisioned Concurrency**:
+
    ```hcl
    resource "aws_lambda_provisioned_concurrency_config" "main" {
      function_name                     = aws_lambda_function.main.function_name
@@ -247,6 +256,7 @@ Slow first invocation, INIT_START in logs
    ```
 
 2. **Optimize initialization**:
+
    ```python
    # Move heavy imports/setup outside handler
    import boto3
@@ -269,6 +279,7 @@ Slow first invocation, INIT_START in logs
 ### Import Errors
 
 **Symptom:**
+
 ```
 Unable to import module 'handler': No module named 'package'
 ```
@@ -276,12 +287,14 @@ Unable to import module 'handler': No module named 'package'
 **Solutions:**
 
 1. **Check package is in deployment**:
+
    ```bash
    # Verify zip contents
    unzip -l lambda.zip | grep package_name
    ```
 
 2. **Correct directory structure**:
+
    ```
    lambda.zip
    ├── handler.py
@@ -290,6 +303,7 @@ Unable to import module 'handler': No module named 'package'
    ```
 
 3. **Use Lambda Layers** for dependencies:
+
    ```hcl
    resource "aws_lambda_function" "main" {
      layers = [aws_lambda_layer_version.dependencies.arn]
@@ -299,6 +313,7 @@ Unable to import module 'handler': No module named 'package'
 ### Permission Errors
 
 **Symptom:**
+
 ```
 AccessDeniedException: User is not authorized to perform: X on resource: Y
 ```
@@ -306,6 +321,7 @@ AccessDeniedException: User is not authorized to perform: X on resource: Y
 **Solution:**
 
 Check IAM role permissions:
+
 ```bash
 # Get role policies
 aws iam list-attached-role-policies --role-name <role-name>
@@ -316,6 +332,7 @@ aws iam get-role-policy --role-name <role-name> --policy-name <policy-name>
 ```
 
 Add required permissions:
+
 ```hcl
 resource "aws_iam_role_policy" "lambda_policy" {
   name = "lambda_policy"
@@ -341,11 +358,13 @@ resource "aws_iam_role_policy" "lambda_policy" {
 **Messages not being processed:**
 
 1. Check event source mapping is enabled:
+
    ```bash
    aws lambda list-event-source-mappings --function-name <name>
    ```
 
 2. Check SQS queue attributes:
+
    ```bash
    aws sqs get-queue-attributes \
      --queue-url <url> \
@@ -357,6 +376,7 @@ resource "aws_iam_role_policy" "lambda_policy" {
 **Messages going to DLQ:**
 
 Check for processing errors in CloudWatch Logs:
+
 ```sql
 fields @timestamp, @message
 | filter @message like /ERROR|Exception/
@@ -368,16 +388,19 @@ fields @timestamp, @message
 **Stream not triggering Lambda:**
 
 1. Check stream is enabled:
+
    ```bash
    aws dynamodb describe-table --table-name <table>
    ```
 
 2. Verify event source mapping:
+
    ```bash
    aws lambda list-event-source-mappings --function-name <name>
    ```
 
 3. Check shard iterator:
+
    ```bash
    aws dynamodbstreams get-shard-iterator \
      --stream-arn <stream-arn> \
@@ -390,6 +413,7 @@ fields @timestamp, @message
 **502 Bad Gateway:**
 
 1. Check Lambda response format:
+
    ```python
    def handler(event, context):
        return {
@@ -402,6 +426,7 @@ fields @timestamp, @message
 2. Check Lambda timeout (API Gateway has 29s limit)
 
 3. Enable CloudWatch Logs for API Gateway:
+
    ```bash
    aws apigateway update-stage \
      --rest-api-id <api-id> \
