@@ -1,0 +1,184 @@
+/* Custom styles for the documentation site */
+
+/* Primary color adjustments */
+:root {
+  --md-primary-fg-color: #1a73e8;
+  --md-primary-fg-color--light: #4285f4;
+  --md-primary-fg-color--dark: #1557b0;
+  --md-accent-fg-color: #ff6d00;
+}
+
+/* Dark mode adjustments */
+[data-md-color-scheme="slate"] {
+  --md-primary-fg-color: #4285f4;
+  --md-primary-fg-color--light: #669df6;
+  --md-primary-fg-color--dark: #1a73e8;
+  --md-accent-fg-color: #ff9e40;
+}
+
+/* Card grid improvements */
+.grid.cards > ul > li {
+  border-radius: 8px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.grid.cards > ul > li:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Code block styling */
+.highlight code {
+  font-size: 0.85em;
+  border-radius: 4px;
+}
+
+/* Admonition improvements */
+.admonition {
+  border-radius: 8px;
+}
+
+/* Table styling */
+.md-typeset table:not([class]) {
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.md-typeset table:not([class]) th {
+  background-color: var(--md-primary-fg-color);
+  color: white;
+}
+
+[data-md-color-scheme="slate"] .md-typeset table:not([class]) th {
+  background-color: var(--md-primary-fg-color--dark);
+}
+
+/* Button styling */
+.md-button {
+  border-radius: 6px;
+  font-weight: 500;
+}
+
+.md-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Navigation improvements */
+.md-nav__link {
+  transition: color 0.15s ease;
+}
+
+/* Footer styling */
+.md-footer {
+  border-top: 1px solid var(--md-default-fg-color--lightest);
+}
+
+/* Tab improvements */
+.md-typeset .tabbed-labels > label {
+  border-radius: 4px 4px 0 0;
+}
+
+/* Mermaid diagram styling */
+.mermaid {
+  text-align: center;
+  margin: 1em 0;
+}
+
+/* Hero section for home page */
+.hero {
+  padding: 3rem 0;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  opacity: 0.8;
+}
+
+/* Badge styling */
+.md-typeset img[src*="badge"],
+.md-typeset img[src*="shields.io"] {
+  vertical-align: middle;
+  margin-right: 4px;
+}
+
+/* Search improvements */
+.md-search__form {
+  border-radius: 8px;
+}
+
+/* Content max-width for readability */
+.md-content__inner {
+  max-width: 900px;
+}
+
+/* Inline code styling */
+.md-typeset code {
+  border-radius: 4px;
+  padding: 0.1em 0.4em;
+}
+
+/* Blockquote styling */
+.md-typeset blockquote {
+  border-left: 4px solid var(--md-primary-fg-color);
+  padding-left: 1rem;
+  margin-left: 0;
+  font-style: italic;
+}
+
+/* Definition list styling */
+.md-typeset dl dt {
+  font-weight: 600;
+  color: var(--md-primary-fg-color);
+}
+
+/* Horizontal rule */
+.md-typeset hr {
+  border-top: 2px solid var(--md-default-fg-color--lightest);
+  margin: 2rem 0;
+}
+
+/* Print styles */
+@media print {
+  .md-sidebar,
+  .md-header,
+  .md-footer {
+    display: none;
+  }
+
+  .md-content {
+    margin: 0;
+  }
+}
+
+/* Mobile improvements */
+@media screen and (max-width: 76.1875em) {
+  .md-nav--primary .md-nav__title {
+    background-color: var(--md-primary-fg-color);
+  }
+}
+
+/* Scrollbar styling for webkit browsers */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--md-default-bg-color);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--md-default-fg-color--lighter);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--md-default-fg-color--light);
+}

@@ -1,0 +1,160 @@
+---
+site_name: Riyan Imam - Project Documentation
+site_description: >-
+  Comprehensive documentation for AWS & Backend development projects.
+  Python, Go, TypeScript, and HCL automation solutions.
+site_author: Riyan Imam
+site_url: https://riyanimam.github.io/general-project-documentation-site/
+
+repo_name: riyanimam/general-project-documentation-site
+repo_url: https://github.com/riyanimam/general-project-documentation-site
+
+copyright: Copyright &copy; 2025-2026 Riyan Imam
+
+theme:
+  name: material
+  custom_dir: docs/overrides
+  language: en
+  features:
+    - announce.dismiss
+    - content.action.edit
+    - content.action.view
+    - content.code.annotate
+    - content.code.copy
+    - content.tabs.link
+    - content.tooltips
+    - header.autohide
+    - navigation.expand
+    - navigation.footer
+    - navigation.indexes
+    - navigation.instant
+    - navigation.instant.prefetch
+    - navigation.path
+    - navigation.prune
+    - navigation.sections
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.top
+    - navigation.tracking
+    - search.highlight
+    - search.share
+    - search.suggest
+    - toc.follow
+  palette:
+    - scheme: default
+      primary: deep orange
+      accent: orange
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - scheme: slate
+      primary: deep orange
+      accent: orange
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  font:
+    text: Inter
+    code: JetBrains Mono
+  icon:
+    logo: material/cloud-outline
+    repo: fontawesome/brands/github
+
+plugins:
+  - search:
+      separator: '[\s\u200b\-_,:!=\[\]()"`/]+|\.(?!\d)|&[lg]t;|(?!\b)(?=[A-Z][a-z])'
+  - minify:
+      minify_html: true
+
+markdown_extensions:
+  - abbr
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.magiclink:
+      normalize_issue_symbols: true
+      repo_url_shorthand: true
+      user: riyanimam
+      repo: general-project-documentation-site
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.snippets:
+      auto_append:
+        - includes/abbreviations.md
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+      combine_header_slug: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
+
+extra:
+  generator: false
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/riyanimam
+    - icon: fontawesome/brands/linkedin
+      link: https://linkedin.com/in/riyanimam
+  analytics:
+    provider: google
+    property: G-XXXXXXXXXX
+
+extra_css:
+  - stylesheets/extra.css
+
+nav:
+  - Home: index.md
+  - About: about.md
+  - Projects:
+      - projects/index.md
+      - Lambda Templates:
+          - projects/lambda-templates/index.md
+          - TypeScript Lambda: projects/lambda-templates/typescript-lambda-template.md
+          - Go Lambda: projects/lambda-templates/go-lambda-template.md
+          - Python Lambda (Quick Actions): projects/lambda-templates/quick-actions-aws-lambda-template.md
+      - Terraform Modules:
+          - projects/terraform-modules/index.md
+          - Event-Based Module: projects/terraform-modules/event-based-terraform-module.md
+      - Utilities:
+          - projects/utilities/index.md
+          - AWS Cleanup Lambda: projects/utilities/aws-environment-cleanup-lambda.md
+          - Georgia Legislation Webcrawler: projects/utilities/georgia-legislation-webcrawler.md
+          - Kanban Board Template: projects/utilities/not-confusing-kanban-board-template.md
+  - Guides:
+      - guides/index.md
+      - Getting Started: guides/getting-started.md
+      - Development Workflows: guides/development-workflows.md
+      - CI/CD Best Practices: guides/cicd-best-practices.md
+      - Security Guidelines: guides/security-guidelines.md
+  - Troubleshooting:
+      - troubleshooting/index.md
+      - Common Issues: troubleshooting/common-issues.md
+      - Lambda Debugging: troubleshooting/lambda-debugging.md
+      - Terraform Issues: troubleshooting/terraform-issues.md
+  - Contributing: contributing.md
+  - Changelog: changelog.md
