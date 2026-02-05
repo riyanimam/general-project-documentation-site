@@ -140,6 +140,17 @@ nav:
       - Terraform Modules:
           - projects/terraform-modules/index.md
           - Event-Based Module: projects/terraform-modules/event-based-terraform-module.md
+      - Bot Playground:
+          - projects/bot-playground/index.md
+          - Discord Bot: projects/bot-playground/discord-bot-playground.md
+          - Signal Bot: projects/bot-playground/signal-bot-playground.md
+      - DevOps Tools:
+          - projects/devops-tools/index.md
+          - Common Repo Assets: projects/devops-tools/common-repo-assets.md
+          - GitHub to New Relic Synthetics: projects/devops-tools/automated-github-to-new-relic-synthetics.md
+      - Frontend:
+          - projects/frontend/index.md
+          - Shotgun Socials Poster: projects/frontend/shotgun-socials-poster.md
       - Utilities:
           - projects/utilities/index.md
           - AWS Cleanup Lambda: projects/utilities/aws-environment-cleanup-lambda.md
