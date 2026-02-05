@@ -141,12 +141,12 @@ const options = {
 
 https.get(options, (res) => {
   assert.equal(res.statusCode, 200, 'Expected status code 200');
-  
+
   let data = '';
   res.on('data', (chunk) => {
     data += chunk;
   });
-  
+
   res.on('end', () => {
     const json = JSON.parse(data);
     assert.equal(json.status, 'healthy', 'Service should be healthy');
@@ -211,7 +211,7 @@ function getAuthToken() {
         'Content-Type': 'application/json'
       }
     };
-    
+
     const req = https.request(authOptions, (res) => {
       let data = '';
       res.on('data', (chunk) => data += chunk);
@@ -220,7 +220,7 @@ function getAuthToken() {
         resolve(json.token);
       });
     });
-    
+
     req.write(JSON.stringify({
       username: $secure.API_USERNAME,
       password: $secure.API_PASSWORD
@@ -239,7 +239,7 @@ getAuthToken().then((token) => {
       'Authorization': `Bearer ${token}`
     }
   };
-  
+
   https.get(options, (res) => {
     assert.equal(res.statusCode, 200);
     console.log('Protected endpoint accessible!');
@@ -265,27 +265,27 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    
+
     steps:
       - uses: actions/checkout@v4
-      
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '18'
-      
+
       - name: Install dependencies
         run: npm ci
-      
+
       - name: Validate synthetic scripts
         run: npm run validate
-      
+
       - name: Deploy to New Relic
         env:
           NEW_RELIC_API_KEY: ${{ secrets.NEW_RELIC_API_KEY }}
           NEW_RELIC_ACCOUNT_ID: ${{ secrets.NEW_RELIC_ACCOUNT_ID }}
         run: npm run deploy
-      
+
       - name: Notify on failure
         if: failure()
         uses: actions/github-script@v7
@@ -313,24 +313,24 @@ on:
 jobs:
   validate:
     runs-on: ubuntu-latest
-    
+
     steps:
       - uses: actions/checkout@v4
-      
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '18'
-      
+
       - name: Install dependencies
         run: npm ci
-      
+
       - name: Validate YAML configs
         run: npm run validate:yaml
-      
+
       - name: Lint JavaScript
         run: npm run lint
-      
+
       - name: Test scripts
         run: npm run test
 ```
@@ -352,13 +352,13 @@ async function deployMonitor(configPath, scriptPath) {
   // Read monitor config
   const configFile = await fs.readFile(configPath, 'utf8');
   const config = yaml.load(configFile);
-  
+
   // Read script if applicable
   let script = null;
   if (scriptPath) {
     script = await fs.readFile(scriptPath, 'utf8');
   }
-  
+
   // Create or update monitor
   const payload = {
     name: config.name,
@@ -369,7 +369,7 @@ async function deployMonitor(configPath, scriptPath) {
     uri: config.uri,
     script: script
   };
-  
+
   try {
     const response = await axios.post(
       `${NEW_RELIC_API}/v3/monitors`,
@@ -381,7 +381,7 @@ async function deployMonitor(configPath, scriptPath) {
         }
       }
     );
-    
+
     console.log(`✓ Deployed monitor: ${config.name}`);
     return response.data;
   } catch (error) {
@@ -393,16 +393,16 @@ async function deployMonitor(configPath, scriptPath) {
 async function deployAll() {
   const monitorsDir = path.join(__dirname, '../synthetics/monitors');
   const scriptsDir = path.join(__dirname, '../synthetics/scripts');
-  
+
   const monitors = await fs.readdir(monitorsDir);
-  
+
   for (const monitor of monitors) {
     if (!monitor.endsWith('.yml')) continue;
-    
+
     const configPath = path.join(monitorsDir, monitor);
     const scriptName = monitor.replace('.yml', '.js');
     const scriptPath = path.join(scriptsDir, scriptName);
-    
+
     let script = null;
     try {
       await fs.access(scriptPath);
@@ -410,10 +410,10 @@ async function deployAll() {
     } catch {
       // No script file
     }
-    
+
     await deployMonitor(configPath, script);
   }
-  
+
   console.log('\n✓ All monitors deployed successfully!');
 }
 

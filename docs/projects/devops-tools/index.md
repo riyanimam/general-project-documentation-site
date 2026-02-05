@@ -65,10 +65,10 @@ jobs:
     permissions:
       contents: read
       id-token: write
-    
+
     steps:
       - uses: actions/checkout@v4
-      
+
       - name: Step name
         run: |
           echo "Action here"

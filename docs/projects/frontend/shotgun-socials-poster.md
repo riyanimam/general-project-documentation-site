@@ -107,6 +107,7 @@ shotgun-socials-poster/
 ### Platform-Specific Tips
 
 #### Twitter/X
+
 ```
 Keep it under 280 characters!
 Use #hashtags for discovery
@@ -115,6 +116,7 @@ Break long posts into threads
 ```
 
 #### Instagram
+
 ```
 First 125 chars appear in feed
 Use 5-10 relevant #hashtags
@@ -123,6 +125,7 @@ Add location for visibility
 ```
 
 #### Reddit
+
 ```
 Choose appropriate subreddit
 Follow subreddit rules
@@ -131,6 +134,7 @@ Engage in comments
 ```
 
 #### Discord
+
 ```
 Use webhooks for automation
 Format with markdown
@@ -177,22 +181,22 @@ import { useState, useEffect } from 'react';
 
 export function useDraft() {
   const [draft, setDraft] = useState<string>('');
-  
+
   // Auto-save to localStorage
   useEffect(() => {
     const timer = setTimeout(() => {
       localStorage.setItem('draft', draft);
     }, 1000);
-    
+
     return () => clearTimeout(timer);
   }, [draft]);
-  
+
   // Load draft on mount
   useEffect(() => {
     const saved = localStorage.getItem('draft');
     if (saved) setDraft(saved);
   }, []);
-  
+
   return [draft, setDraft] as const;
 }
 ```
@@ -207,7 +211,7 @@ import { platformRules } from '../utils/validation';
 export function useValidation(text: string, platform: string) {
   return useMemo(() => {
     const rules = platformRules[platform];
-    
+
     return {
       isValid: text.length <= rules.maxLength,
       charCount: text.length,
@@ -357,21 +361,21 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    
+
     steps:
       - uses: actions/checkout@v4
-      
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-      
+
       - name: Install dependencies
         run: npm ci
-      
+
       - name: Build
         run: npm run build
-      
+
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
@@ -410,8 +414,8 @@ jobs:
     Direct API calls from browser will hit CORS. Use a backend proxy:
     ```typescript
     // Instead of direct API call
-    fetch('https://api.twitter.com/...') // ❌ CORS error
-    
+    fetch('<https://api.twitter.com/>...') // ❌ CORS error
+
     // Use your backend
     fetch('https://your-backend.com/api/post') // ✓
     ```

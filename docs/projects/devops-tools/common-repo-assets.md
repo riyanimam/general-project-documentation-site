@@ -311,7 +311,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      
+
       - name: Apply rulesets
         env:
           GH_TOKEN: ${{ secrets.PAT_TOKEN }}

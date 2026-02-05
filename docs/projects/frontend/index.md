@@ -45,11 +45,11 @@ interface Props {
 
 export const Component: FC<Props> = ({ title, onSubmit }) => {
   const [state, setState] = useState<string>('');
-  
+
   useEffect(() => {
     // Side effects
   }, []);
-  
+
   return <div>{/* JSX */}</div>;
 };
 ```

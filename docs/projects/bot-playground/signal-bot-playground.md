@@ -111,7 +111,7 @@ import (
 func HandleIncomingMessage(msg *Message) (*Response, error) {
     // Convert to lowercase for case-insensitive matching
     content := strings.ToLower(msg.Content)
-    
+
     switch {
     case strings.Contains(content, "hello"):
         return &Response{
@@ -287,7 +287,7 @@ func HandleGroupJoin(event *GroupEvent) error {
 func StartScheduledMessages() {
     ticker := time.NewTicker(24 * time.Hour)
     defer ticker.Stop()
-    
+
     for range ticker.C {
         msg := "Daily reminder: Don't forget to check your tasks!"
         sendMessageToAllGroups(msg)
@@ -303,10 +303,10 @@ func RouteCommand(msg *Message) (*Response, error) {
     if !strings.HasPrefix(msg.Content, "/") {
         return nil, nil
     }
-    
+
     parts := strings.Split(msg.Content, " ")
     command := strings.TrimPrefix(parts[0], "/")
-    
+
     switch command {
     case "echo":
         return &Response{Text: strings.Join(parts[1:], " ")}, nil
@@ -360,6 +360,7 @@ func RouteCommand(msg *Message) (*Response, error) {
 ### Bot Not Receiving Messages
 
 1. **Check Signal CLI**: Ensure Signal CLI is running and registered
+
    ```bash
    signal-cli -u +NUMBER receive
    ```
@@ -367,6 +368,7 @@ func RouteCommand(msg *Message) (*Response, error) {
 2. **Verify Permissions**: Check that bot has permissions in groups
 
 3. **Check Logs**: Enable debug logging
+
    ```bash
    export LOG_LEVEL=debug
    ```

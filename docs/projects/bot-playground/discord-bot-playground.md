@@ -243,9 +243,9 @@ WantedBy=multi-user.target
     being temporarily banned:
     ```go
     import "time"
-    
+
     var lastCommand = make(map[string]time.Time)
-    
+
     func checkRateLimit(userID string) bool {
         if last, ok := lastCommand[userID]; ok {
             if time.Since(last) < 3*time.Second {
@@ -275,6 +275,7 @@ WantedBy=multi-user.target
 ### Bot Doesn't Respond
 
 1. **Check Token**: Verify your bot token is correct
+
    ```bash
    echo $DISCORD_BOT_TOKEN
    ```
@@ -287,11 +288,13 @@ WantedBy=multi-user.target
 
 1. **Wait for Propagation**: Can take up to 1 hour for global commands
 2. **Use Guild Commands**: For instant updates during development:
+
    ```go
    _, err := s.ApplicationCommandCreate(appID, guildID, cmd)
    ```
 
 3. **Clear Old Commands**: Remove outdated commands:
+
    ```go
    commands, _ := s.ApplicationCommands(appID, guildID)
    for _, cmd := range commands {
