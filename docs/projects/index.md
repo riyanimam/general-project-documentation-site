@@ -23,6 +23,32 @@ Reusable Infrastructure as Code modules:
 |--------|---------------|--------------|
 | [Event-Based Module](terraform-modules/event-based-terraform-module.md) | SQS, DynamoDB, Kinesis, EventBridge | Security scanning, examples |
 
+### Bot Playground
+
+Messaging bot development and experimentation:
+
+| Project | Platform | Stack |
+|---------|----------|-------|
+| [Discord Bot Playground](bot-playground/discord-bot-playground.md) | Discord | Go, DiscordGo |
+| [Signal Bot Playground](bot-playground/signal-bot-playground.md) | Signal | Go, Signal CLI |
+
+### DevOps Tools
+
+Repository management and CI/CD automation:
+
+| Project | Purpose | Stack |
+|---------|---------|-------|
+| [Common Repo Assets](devops-tools/common-repo-assets.md) | GitHub rulesets & configs | JSON, YAML |
+| [Automated GitHub to New Relic Synthetics](devops-tools/automated-github-to-new-relic-synthetics.md) | Synthetics automation | JavaScript, GitHub Actions |
+
+### Frontend Projects
+
+User interface and web applications:
+
+| Project | Purpose | Stack |
+|---------|---------|-------|
+| [Shotgun Socials Poster](frontend/shotgun-socials-poster.md) | Multi-platform social poster | React, TypeScript, Vite |
+
 ### Utility Projects
 
 Developer tools and automation:
